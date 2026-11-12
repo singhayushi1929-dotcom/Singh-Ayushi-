@@ -27,7 +27,7 @@ const allPredictions = document.getElementById("allPredictions");
 
 function setMessage(message, type = "") {
   modelMessage.textContent = message;
-  modelMessage.className = \`model-message \${type}\`.trim();
+  modelMessage.className = `model-message ${type}`.trim();
 }
 
 function getCareGuidance(label) {
@@ -56,7 +56,7 @@ async function loadModel() {
   try {
     setMessage("Loading your trained model…");
     model = await tmImage.load(MODEL_URL + "model.json", MODEL_URL + "metadata.json");
-    setMessage(\`Model ready. \${model.getTotalClasses()} classes loaded.\`, "success");
+    setMessage(`Model ready. ${model.getTotalClasses()} classes loaded.`, "success");
     predictButton.disabled = !selectedImage;
   } catch (error) {
     console.error("Model loading error:", error);
@@ -108,8 +108,8 @@ predictButton.addEventListener("click", async () => {
     const best = predictions[0];
     const percentage = (best.probability * 100).toFixed(1);
     predictionLabel.textContent = best.className;
-    confidenceValue.textContent = \`\${percentage}%\`;
-    confidenceBar.style.width = \`\${Math.max(0, Math.min(100, best.probability * 100))}%\`;
+    confidenceValue.textContent = `${percentage}%`;
+    confidenceBar.style.width = `${Math.max(0, Math.min(100, best.probability * 100))}%`;
     careText.textContent = getCareGuidance(best.className);
     allPredictions.innerHTML = "<strong>All model class scores</strong>";
     predictions.forEach(item => {
@@ -118,7 +118,7 @@ predictButton.addEventListener("click", async () => {
       const label = document.createElement("span");
       const score = document.createElement("b");
       label.textContent = item.className;
-      score.textContent = \`\${(item.probability * 100).toFixed(1)}%\`;
+      score.textContent = `${(item.probability * 100).toFixed(1)}%`;
       line.append(label, score);
       allPredictions.appendChild(line);
     });
