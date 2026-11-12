@@ -5,7 +5,7 @@
   3. Copy the shareable model URL and paste it below, including the final slash.
   Example: https://teachablemachine.withgoogle.com/models/AbCdEf123/
 */
-const MODEL_URL = "PASTE_YOUR_TEACHABLE_MACHINE_MODEL_URL_HERE/";
+const MODEL_URL = "https://teachablemachine.withgoogle.com/models/I5rFG73yO/";
 
 let model = null;
 let selectedImage = null;
